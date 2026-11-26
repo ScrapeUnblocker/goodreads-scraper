@@ -18,7 +18,7 @@ from __future__ import annotations
 import json
 import re
 from collections.abc import Iterator
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from bs4 import BeautifulSoup, NavigableString, Tag
@@ -57,7 +57,7 @@ class GoodreadsParseError(GoodreadsError):
 # Small value helpers
 # --------------------------------------------------------------------------- #
 
-_EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
+_EPOCH = datetime(1970, 1, 1, tzinfo=UTC)
 _COUNT = re.compile(r"(\d[\d,]*(?:\.\d+)?)\s*([kKmM](?![a-zA-Z]))?")
 _ORDINAL = re.compile(r"(\d+)(?:st|nd|rd|th)", re.I)
 _DATE_FORMATS = (
